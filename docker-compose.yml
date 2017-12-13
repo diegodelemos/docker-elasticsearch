@@ -1,0 +1,29 @@
+version: '2'
+services:
+  elasticsearch:
+    build: .
+    environment:
+      ELASTIC_PWD: changeme
+      KIBANA_PWD: changeme
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    mem_limit: 1g
+    volumes:
+      - esdata:/usr/share//elasticsearch/data
+      - esconfig:/usr/share//elasticsearch/config
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    network_mode: bridge
+    restart: always
+
+volumes:
+  esdata:
+    driver: local
+  esconfig:
+    driver: local

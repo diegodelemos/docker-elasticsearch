@@ -6,32 +6,6 @@ admin:
       "*":
         - ALL
 
-kibana_user:
-  cluster:
-    - MONITOR
-    - CRUD
-  indices:
-    '?kibana':
-      '*':
-        - INDEX_ALL
-        - READ
-
-beats_user:
-  cluster:
-    - ES_INPUT
-  indices:
-    "*beat-*":
-      "*":
-        - INDEX_OWNER
-
-logstash_user:
-  cluster:
-    - ES_INPUT
-  indices:
-    'logstash-*':
-      '*':
-        - INDEX_OWNER
-
 read_only:
   indices:
     '*':
